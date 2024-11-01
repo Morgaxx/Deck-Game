@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://olwaum1blrmi"]
+
+[ext_resource type="Script" path="res://menus/settings.gd" id="1_alpnh"]
+
+[node name="settings" type="Node2D"]
+script = ExtResource("1_alpnh")
+
+[node name="Back" type="Button" parent="."]
+offset_left = 126.0
+offset_top = 65.0
+offset_right = 310.0
+offset_bottom = 122.0
+text = "Back
+"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

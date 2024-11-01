@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://daisycf418c1j"]
+
+[ext_resource type="Script" path="res://player/playableCharacters/player.gd" id="1_ee2mj"]
+[ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://assets/characters/happy_boo/happy_boo.tscn" id="2_fvkil"]
+[ext_resource type="PackedScene" uid="uid://b6eyw3fxqryaq" path="res://entities/weapons/pistol/gun.tscn" id="3_kxy8r"]
+[ext_resource type="Script" path="res://player/playableCharacters/health_bar.gd" id="4_0w246"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b77af"]
+radius = 34.0588
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8m740"]
+radius = 75.3127
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wnwgs"]
+radius = 678.001
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kvoy"]
+bg_color = Color(0.152941, 0.168627, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tne5v"]
+bg_color = Color(0.623529, 0.866667, 0.317647, 1)
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_ee2mj")
+
+[node name="HappyBooModel" parent="." instance=ExtResource("2_fvkil")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b77af")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1, 0.978821)
+zoom = Vector2(0.5, 0.5)
+
+[node name="Gun" parent="." instance=ExtResource("3_kxy8r")]
+position = Vector2(0, -34)
+
+[node name="HurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_8m740")
+debug_color = Color(0.623394, 0.580974, 0.591852, 0.42)
+
+[node name="PickupBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_wnwgs")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -84.0
+offset_top = -131.0
+offset_right = 85.0
+offset_bottom = -104.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2kvoy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tne5v")
+value = 100.0
+show_percentage = false
+script = ExtResource("4_0w246")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]
+[connection signal="value_changed" from="HealthBar" to="HealthBar" method="_on_value_changed"]

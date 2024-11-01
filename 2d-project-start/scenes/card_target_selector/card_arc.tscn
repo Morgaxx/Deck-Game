@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://stjdav3dwdp2"]
+
+[sub_resource type="Curve" id="Curve_tplap"]
+min_value = 0.2
+_data = [Vector2(0, 0.230263), 0.0, 0.0, 0, 0, Vector2(0.946281, 0.964835), 0.0, 0.0, 0, 0, Vector2(0.991736, 0.217582), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="CardArc" type="Line2D"]
+width = 400.0
+width_curve = SubResource("Curve_tplap")
