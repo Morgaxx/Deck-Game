@@ -32,7 +32,6 @@ shape = SubResource("CircleShape2D_b77af")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(1, 0.978821)
-zoom = Vector2(0.5, 0.5)
 
 [node name="Gun" parent="." instance=ExtResource("3_kxy8r")]
 position = Vector2(0, -34)

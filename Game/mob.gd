@@ -1,30 +1,38 @@
 extends CharacterBody2D
 class_name Mob
 
-const MAX_HEALTH = 3
-var current_health = MAX_HEALTH
-var damage = 5.0
+@export var enemy_stats: EnemyStats : set = set_enemy_stats
 
 @onready var player = get_node("/root/Game/Player")
 	
+enum currentAnimation {IDLE,WALK,HURT}
 	
 func _physics_process(delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction * 300.0
+	velocity = direction * enemy_stats.speed
 	move_and_slide()
 	
 	if velocity.length() > 0.0:
-		%Slime.play_walk()
+		play_animation("WALK")
 	else:
-		%Slime.play_idle()
+		play_animation("IDLE")
 		
+func set_enemy_stats(value: EnemyStats) -> void:
+	enemy_stats = value.create_instance()
+	
+	#if not stats.stats_changed.is_connected(update_stats):    This is to connect any signals
+		#stats.stats_changed.connect(update_stats)
+	
+func play_animation(animationToPlay: String):
+	pass
+	
 func get_damage() -> float:
-	return damage
+	return enemy_stats.damage
 	
 func take_damage() -> void:
-	current_health -= 1
-	%Slime.play_hurt()
-	if current_health == 0:
+	enemy_stats.current_health -= 1
+	play_animation("HURT")
+	if enemy_stats.current_health == 0:
 		die()
 		
 func die() -> void:

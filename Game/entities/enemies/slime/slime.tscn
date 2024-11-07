@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://skbite502t6b"]
+[gd_scene load_steps=5 format=3 uid="uid://skbite502t6b"]
 
 [ext_resource type="Script" path="res://entities/enemies/slime/slime.gd" id="1_xrv21"]
+[ext_resource type="Resource" uid="uid://b5ediokqjsw1l" path="res://entities/enemies/slime/slime_enemy_stats.tres" id="2_1bfp8"]
 [ext_resource type="PackedScene" uid="uid://ogik4s70pgwl" path="res://entities/enemies/slime/model/slimeModel.tscn" id="2_h7ivc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_huo5a"]
@@ -11,6 +12,7 @@ collision_layer = 2
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_xrv21")
+enemy_stats = ExtResource("2_1bfp8")
 
 [node name="Slime" parent="." instance=ExtResource("2_h7ivc")]
 unique_name_in_owner = true
