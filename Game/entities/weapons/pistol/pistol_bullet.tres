@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Projectile" load_steps=2 format=3 uid="uid://bs3rmnc7evfek"]
+
+[ext_resource type="Script" path="res://custom_resources/projectile.gd" id="1_70sve"]
+
+[resource]
+script = ExtResource("1_70sve")
+damage = 1
+speed = 1000
+size = 1
+range = 1200
+isAllied = false

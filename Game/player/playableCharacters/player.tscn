@@ -45,9 +45,19 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_8m740")
 debug_color = Color(0.623394, 0.580974, 0.591852, 0.42)
 
-[node name="PickupBox" type="Area2D" parent="."]
+[node name="PickupMagnetBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupBox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupMagnetBox"]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_wnwgs")
+
+[node name="PickupDespawnBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDespawnBox"]
 position = Vector2(0, -34)
 shape = SubResource("CircleShape2D_wnwgs")
 

@@ -142,6 +142,7 @@ left_mouse={
 2d_physics/layer_1="Layer 1"
 2d_physics/layer_2="enemies"
 3d_physics/layer_2="player"
+2d_physics/layer_3="experience"
 2d_physics/layer_5="card_target_selector"
 2d_physics/layer_6="card_drop_area"
 2d_physics/layer_7="card_target_location"

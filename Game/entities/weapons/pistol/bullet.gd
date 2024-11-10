@@ -1,15 +1,15 @@
 extends Area2D
 
-const SPEED = 1000
-const RANGE = 1200
+@export var projectile_stats: Projectile
+
 var travelled_distance = 0
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * SPEED * delta
+	position += direction * projectile_stats.speed * delta
 
-	travelled_distance += SPEED * delta
-	if travelled_distance > RANGE:
+	travelled_distance += projectile_stats.speed * delta
+	if travelled_distance > projectile_stats.range:
 		queue_free()
 
 
@@ -17,4 +17,3 @@ func _on_body_entered(body: Node2D) -> void:
 	queue_free()
 	if body.has_method("take_damage"):
 		body.take_damage()
-		
