@@ -13,7 +13,7 @@ point_count = 5
 [sub_resource type="LabelSettings" id="LabelSettings_ri1qy"]
 font_size = 75
 
-[node name="Game" type="Node2D"]
+[node name="LevelOne" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(36, 28)
 script = ExtResource("1_jav5g")
@@ -80,4 +80,5 @@ label_settings = SubResource("LabelSettings_ri1qy")
 horizontal_alignment = 1
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

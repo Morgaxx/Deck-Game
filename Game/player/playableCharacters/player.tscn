@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://daisycf418c1j"]
+[gd_scene load_steps=12 format=3 uid="uid://daisycf418c1j"]
 
 [ext_resource type="Script" path="res://player/playableCharacters/player.gd" id="1_ee2mj"]
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://assets/characters/happy_boo/happy_boo.tscn" id="2_fvkil"]
@@ -12,13 +12,19 @@ radius = 34.0588
 radius = 75.3127
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wnwgs"]
-radius = 678.001
+radius = 507.97
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aspt3"]
+radius = 34.1321
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2kvoy"]
 bg_color = Color(0.152941, 0.168627, 0.188235, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tne5v"]
 bg_color = Color(0.623529, 0.866667, 0.317647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ju1jo"]
+bg_color = Color(0.30385, 0.599011, 1, 1)
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -38,10 +44,9 @@ position = Vector2(0, -34)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
-collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="HurtCollision" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CircleShape2D_8m740")
 debug_color = Color(0.623394, 0.580974, 0.591852, 0.42)
 
@@ -49,17 +54,17 @@ debug_color = Color(0.623394, 0.580974, 0.591852, 0.42)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupMagnetBox"]
-position = Vector2(0, -34)
+[node name="PickupMagnetCollision" type="CollisionShape2D" parent="PickupMagnetBox"]
 shape = SubResource("CircleShape2D_wnwgs")
+debug_color = Color(0.727331, 0.239088, 1, 0.42)
 
 [node name="PickupDespawnBox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDespawnBox"]
-position = Vector2(0, -34)
-shape = SubResource("CircleShape2D_wnwgs")
+[node name="PickupDespawnCollision" type="CollisionShape2D" parent="PickupDespawnBox"]
+shape = SubResource("CircleShape2D_aspt3")
+debug_color = Color(0.656065, 0.516733, 0, 0.42)
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
@@ -73,6 +78,18 @@ value = 100.0
 show_percentage = false
 script = ExtResource("4_0w246")
 
+[node name="ExperienceBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -84.0
+offset_top = 43.0
+offset_right = 85.0
+offset_bottom = 58.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2kvoy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ju1jo")
+script = ExtResource("4_0w246")
+
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]
+[connection signal="area_entered" from="PickupDespawnBox" to="." method="_on_pickup_despawn_box_area_entered"]
 [connection signal="value_changed" from="HealthBar" to="HealthBar" method="_on_value_changed"]
+[connection signal="value_changed" from="ExperienceBar" to="ExperienceBar" method="_on_value_changed"]

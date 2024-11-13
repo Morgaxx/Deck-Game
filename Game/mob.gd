@@ -2,8 +2,9 @@ extends CharacterBody2D
 class_name Mob
 
 @export var enemy_stats: EnemyStats : set = set_enemy_stats
+@export var experience_stats: ExperienceStats
 
-@onready var player = get_node("/root/Game/Player")
+@onready var player = get_node("/root/levelOneManager/LevelOne/Player") #This needs to be changed to just be the player
 	
 enum currentAnimation {IDLE,WALK,HURT}
 	
@@ -38,6 +39,11 @@ func take_damage() -> void:
 func die() -> void:
 	queue_free()
 	const SMOKE_SCENE = preload("res://assets/smoke_explosion/smoke_explosion.tscn")
+	const EXPERIENCE_SCENE = preload("res://experienceNugget.tscn")
 	var smoke = SMOKE_SCENE.instantiate()
+	var experience = EXPERIENCE_SCENE.instantiate()
+	experience.stats = experience_stats
 	get_parent().add_child(smoke)
+	get_parent().add_child(experience)
 	smoke.global_position = global_position
+	experience.global_position = global_position

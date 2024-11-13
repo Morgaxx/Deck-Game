@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ExperienceStats" load_steps=2 format=3 uid="uid://cs2ogcn17vsh2"]
+
+[ext_resource type="Script" path="res://custom_resources/experience.gd" id="1_j0ako"]
+
+[resource]
+script = ExtResource("1_j0ako")
+ammount = 1
+size = 1
+speed = 1000

@@ -2,14 +2,14 @@ extends Area2D
 
 @export var projectile_stats: Projectile
 
-var travelled_distance = 0
+var total_travelled_distance = 0
 
 func _physics_process(delta: float) -> void:
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * projectile_stats.speed * delta
 
-	travelled_distance += projectile_stats.speed * delta
-	if travelled_distance > projectile_stats.range:
+	total_travelled_distance += projectile_stats.speed * delta
+	if total_travelled_distance > projectile_stats.range:
 		queue_free()
 
 

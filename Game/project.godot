@@ -99,6 +99,10 @@ project/assembly_name="Getting started with Godot 4"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+levelScenes=""
+
 [input]
 
 move_left={
@@ -139,7 +143,7 @@ left_mouse={
 
 [layer_names]
 
-2d_physics/layer_1="Layer 1"
+2d_physics/layer_1="player"
 2d_physics/layer_2="enemies"
 3d_physics/layer_2="player"
 2d_physics/layer_3="experience"

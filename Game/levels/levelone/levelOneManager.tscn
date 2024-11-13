@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj0vq364groav"]
+
+[ext_resource type="Script" path="res://levels/levelone/level_one_manager.gd" id="1_3ekqx"]
+[ext_resource type="PackedScene" uid="uid://bvbyysepndyl0" path="res://player/level_up_screen.tscn" id="2_iu3q5"]
+[ext_resource type="PackedScene" uid="uid://ciqustw2kv7dy" path="res://levels/levelone/levelone.tscn" id="3_y8snp"]
+
+[node name="levelOneManager" type="Node"]
+script = ExtResource("1_3ekqx")
+
+[node name="LevelUpScreen" parent="." instance=ExtResource("2_iu3q5")]
+unique_name_in_owner = true
+
+[node name="LevelOne" parent="." instance=ExtResource("3_y8snp")]
+unique_name_in_owner = true
+
+[connection signal="change_scene_to_level" from="LevelUpScreen" to="." method="_on_level_up_screen_change_scene_to_level"]
+[connection signal="change_to_level_up" from="LevelOne" to="." method="_on_level_one_change_to_level_up"]
