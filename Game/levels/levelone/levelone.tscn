@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciqustw2kv7dy"]
+[gd_scene load_steps=7 format=3 uid="uid://ciqustw2kv7dy"]
 
 [ext_resource type="Script" path="res://levels/levelone/levelone.gd" id="1_jav5g"]
 [ext_resource type="PackedScene" uid="uid://daisycf418c1j" path="res://player/playableCharacters/player.tscn" id="2_xhrie"]
 [ext_resource type="PackedScene" uid="uid://difa2lnh1fvpg" path="res://levels/levelone/pineTree.tscn" id="3_b20gy"]
+[ext_resource type="PackedScene" uid="uid://qiopnf3dntun" path="res://experienceNugget.tscn" id="4_pfo68"]
 
 [sub_resource type="Curve2D" id="Curve2D_r1wyt"]
 _data = {
@@ -78,6 +79,9 @@ grow_vertical = 2
 text = "GAME OVER"
 label_settings = SubResource("LabelSettings_ri1qy")
 horizontal_alignment = 1
+
+[node name="ExperienceNugget" parent="." instance=ExtResource("4_pfo68")]
+position = Vector2(1044, 521)
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]

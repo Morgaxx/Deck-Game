@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsvko15n6iwcm"]
+
+[ext_resource type="PackedScene" uid="uid://dt4587nnxl0wo" path="res://scenes/card_target_selector/card_target_selector.tscn" id="3_klbs6"]
+[ext_resource type="Theme" uid="uid://cb047y28ise55" path="res://main_theme.tres" id="5_xt74b"]
+[ext_resource type="Script" path="res://player/hand.gd" id="6_a7w2s"]
+[ext_resource type="PackedScene" uid="uid://b6l2dw8cg8jpq" path="res://scenes/card_ui/card_ui.tscn" id="7_5mo2j"]
+[ext_resource type="Resource" uid="uid://cq7y751c6g5ji" path="res://player/playableCharacters/warrior/cards/warrior_block.tres" id="8_dhroc"]
+[ext_resource type="Resource" uid="uid://dk44hg2fx2vo4" path="res://player/playableCharacters/warrior/cards/warrior_axe_attack.tres" id="9_iyhen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo7em"]
+size = Vector2(1917.58, 458.822)
+
+[node name="TestLevelUpScreen" type="Node2D"]
+process_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="Hand" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 968.0
+offset_top = 609.0
+offset_right = 1878.0
+offset_bottom = 849.0
+theme = ExtResource("5_xt74b")
+alignment = 1
+script = ExtResource("6_a7w2s")
+
+[node name="CardUI" parent="CanvasLayer/Hand" instance=ExtResource("7_5mo2j")]
+layout_mode = 2
+card = ExtResource("8_dhroc")
+
+[node name="CardUI2" parent="CanvasLayer/Hand" instance=ExtResource("7_5mo2j")]
+layout_mode = 2
+card = ExtResource("8_dhroc")
+
+[node name="CardUI3" parent="CanvasLayer/Hand" instance=ExtResource("7_5mo2j")]
+layout_mode = 2
+card = ExtResource("9_iyhen")
+
+[node name="CardUI4" parent="CanvasLayer/Hand" instance=ExtResource("7_5mo2j")]
+layout_mode = 2
+card = ExtResource("9_iyhen")
+
+[node name="CardUI5" parent="CanvasLayer" instance=ExtResource("7_5mo2j")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 157.0
+offset_top = 611.0
+offset_right = 327.0
+offset_bottom = 851.0
+grow_horizontal = 1
+grow_vertical = 1
+card = ExtResource("8_dhroc")
+
+[node name="CardUI6" parent="CanvasLayer" instance=ExtResource("7_5mo2j")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 331.0
+offset_top = 611.0
+offset_right = 501.0
+offset_bottom = 851.0
+grow_horizontal = 1
+grow_vertical = 1
+card = ExtResource("8_dhroc")
+
+[node name="CardUI7" parent="CanvasLayer" instance=ExtResource("7_5mo2j")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 505.0
+offset_top = 611.0
+offset_right = 675.0
+offset_bottom = 851.0
+grow_horizontal = 1
+grow_vertical = 1
+card = ExtResource("8_dhroc")
+
+[node name="CardUI8" parent="CanvasLayer" instance=ExtResource("7_5mo2j")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 679.0
+offset_top = 611.0
+offset_right = 849.0
+offset_bottom = 851.0
+grow_horizontal = 1
+grow_vertical = 1
+card = ExtResource("8_dhroc")
+
+[node name="CardDropArea" type="Area2D" parent="CanvasLayer"]
+scale = Vector2(1.00074, 0.990353)
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/CardDropArea"]
+position = Vector2(956.789, 235.07)
+scale = Vector2(1, 0.999999)
+shape = SubResource("RectangleShape2D_fo7em")
+
+[node name="CardTargetSelector" parent="CanvasLayer" instance=ExtResource("3_klbs6")]
